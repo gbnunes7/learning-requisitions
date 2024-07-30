@@ -5,6 +5,15 @@ async function listaVideos() {
      return videos
  }
 
+
+async function buscaVideo(termoDeBusca) {
+    const busca = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`)
+    const buscaVideos = busca.json()
+
+    return buscaVideos
+}
+
+
 async function enviaVideo(titulo,descricao,url,imagem) {
     const envia = await fetch('http://localhost:3000/videos', {
         method: "POST",
@@ -24,5 +33,5 @@ async function enviaVideo(titulo,descricao,url,imagem) {
 }
 
 
- export const conectaApi = {listaVideos,enviaVideo}
+ export const conectaApi = {listaVideos,enviaVideo,buscaVideo}
  
